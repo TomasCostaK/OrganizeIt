@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     // Drawer Variables
+    private String ola;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
 

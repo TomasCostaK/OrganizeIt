@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/db1" android:title="Dashboard" android:icon="@drawable/ic_backup_black_24dp"></item>
+    <item android:id="@+id/db2" android:title="Settings" android:icon="@drawable/ic_backup_black_24dp"></item>
+    <item android:id="@+id/db3" android:title="Name" android:icon="@drawable/ic_backup_black_24dp"></item>
+    <item android:id="@+id/db4" android:title="Favour" android:icon="@drawable/ic_backup_black_24dp"></item>
+    <item android:id="@+id/db5" android:title="Example" android:icon="@drawable/ic_backup_black_24dp"></item>
+</menu>

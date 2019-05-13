@@ -14,6 +14,13 @@ public class Card {
 
     }
 
+    public Card(String text) {
+        mText = text;
+        mItem1 = null;
+        mItem2 = null;
+        mItem3 = null;
+    }
+
     public String getmText() {
         return mText;
     }

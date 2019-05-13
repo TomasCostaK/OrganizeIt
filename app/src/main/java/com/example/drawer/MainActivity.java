@@ -1,5 +1,6 @@
 package com.example.drawer;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,7 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private ArrayList<Card> cards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +44,50 @@ public class MainActivity extends AppCompatActivity {
         fbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar snackbar = Snackbar.make(v, "Clicked", Snackbar.LENGTH_SHORT);
-                snackbar.show();
+
+                // Modal para criar boards e teams
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_new_board, null);
+                TextView create_board = (TextView) mView.findViewById(R.id.create_board);
+                final TextView name_text = (TextView) mView.findViewById(R.id.name_text);
+                TextView member_text = (TextView) mView.findViewById(R.id.member_text);
+                final EditText name_edit = (EditText) mView.findViewById(R.id.name_edit);
+                TextView member_edit = (TextView) mView.findViewById(R.id.member_edit);
+                Button cancel_btn = (Button) mView.findViewById(R.id.cancel_btn);
+                Button create_btn = (Button) mView.findViewById(R.id.create_btn);
+                Button invite_btn = (Button) mView.findViewById(R.id.invite_btn);
+
+                mBuilder.setView(mView);
+                final AlertDialog creation_dialog = mBuilder.create();
+                creation_dialog.show();
+
+                cancel_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        creation_dialog.hide();
+                    }
+                });
+
+                invite_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(MainActivity.this, "Inivitation Sent", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                create_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        insertItem(new Card(name_edit.getText().toString(), "+ Add Card", "+ Add card", "+ Add Card"));
+                        creation_dialog.hide();
+                    }
+                });
             }
         });
 
         // Recycler
-        ArrayList<Card> cards = new ArrayList<>();
-        cards.add(new Card("Favorite Boards", "Colors", "Finances", "Training"));
-        cards.add(new Card("Personal Boards", "House Needs", "Finances", "Training"));
-        cards.add(new Card("Design Team", "Colors", "Fonts", "Assets"));
-
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new Adapter(cards);
-
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        createCardList();
+        buildRecyclerView();
 
         // DRAWER
         mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -78,6 +110,28 @@ public class MainActivity extends AppCompatActivity {
         fav_view.setAdapter(arrayAdapter);
         */
 
+    }
+
+    public void createCardList() {
+        cards = new ArrayList<>();
+        cards.add(new Card("Favorite Boards", "Colors", "Finances", "Training"));
+        cards.add(new Card("Personal Boards", "House Needs", "Finances", "Training"));
+        cards.add(new Card("Design Team", "Colors", "Fonts", "Assets"));
+    }
+
+    public void buildRecyclerView() {
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new Adapter(cards);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    public void insertItem(Card card) {
+        cards.add(card);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="25dp"
+    android:padding="25dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deleting Card!"
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:id="@+id/deletecardtitle" />
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Are you sure you want to delete 'Lista Compras'?"
+        android:textSize="20sp"
+        android:id="@+id/deleteCardText" />
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:textAllCaps="false"
+            android:layout_marginRight="10dp"
+            android:text="Cancel"/>
+
+        <Button
+            android:id="@+id/deleteCard_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:layout_marginRight="20dp"
+            android:textAllCaps="false"
+            android:text="Delete"/>
+
+    </LinearLayout>
+
+</LinearLayout>

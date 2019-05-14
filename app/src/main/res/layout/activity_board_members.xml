@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".BoardMembers">
+
+    <TextView
+        android:id="@+id/BoardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Board Name"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/buttonChange">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Change board name" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonChange"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="@color/colorPrimary"
+            android:text="Change"
+            tools:text="Change" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/BoardDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Board Description"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/buttonDescrip">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Change board description" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/buttonDescrip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="@color/colorPrimary"
+            android:text="Change"
+            tools:text="Change" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Collaborators"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Collaborators"
+        android:textSize="30dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current:"
+                android:textSize="20dp"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="end">
+                <TextView
+                    android:id="@+id/collab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tomás Costa"
+                    android:textSize="20dp"
+                    android:padding="10dp"/>
+
+                <Button
+                    android:id="@+id/deleteButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark"
+                    android:drawableStart="@drawable/delete"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="end">
+                <TextView
+                    android:id="@+id/collab2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="André Gual"
+                    android:textSize="20dp"
+                    android:padding="10dp"/>
+
+                <Button
+                    android:id="@+id/deleteButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark"
+                    android:drawableStart="@drawable/delete"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="end">
+                <TextView
+                    android:id="@+id/collab3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="António Costa"
+                    android:textSize="20dp"
+                    android:padding="10dp"/>
+
+                <Button
+                    android:id="@+id/deleteButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark"
+                    android:drawableStart="@drawable/delete"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.drawer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -48,6 +49,10 @@ public class Board extends AppCompatActivity {
         getSupportActionBar().setTitle("Design Board");
 
 
+    }
+
+    public void btnGoSettings(View view){
+        startActivity(new Intent(this, BoardMembers.class));
     }
 
 }

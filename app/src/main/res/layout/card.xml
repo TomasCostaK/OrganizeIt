@@ -54,6 +54,15 @@
 
         </View>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+        </android.support.v7.widget.RecyclerView>
+        <!-- STATIC CARDS SHOW
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,31 +80,8 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="15sp" />
 
-            <!--
-            <TextView
-                android:id="@+id/item2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/favorite_boards"
-                android:fontFamily="@font/montserrat"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="15sp" />
+        </LinearLayout> -->
 
-            <TextView
-                android:id="@+id/item3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="@string/favorite_boards"
-                android:fontFamily="@font/montserrat"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="15sp" />
-                -->
-
-        </LinearLayout>
 
     </LinearLayout>
 

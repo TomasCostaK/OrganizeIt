@@ -1,22 +1,15 @@
 package com.example.drawer;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.drawer.Models.Board_Model_Main;
 
 import java.util.ArrayList;
 
@@ -29,7 +22,7 @@ public class Board extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<Card> cards;
+    private ArrayList<Board_Model_Main> cards;
 
 
     @Override
@@ -74,7 +67,7 @@ public class Board extends AppCompatActivity {
                 create_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        insertItem(new Card(name_edit.getText().toString(), "+ Add Card", "+ Add card", "+ Add Card"));
+                        insertItem(new Board_Model_Main(name_edit.getText().toString(), "+ Add card", "+ Add card", "+ Add card"));
                         creation_dialog.hide();
                     }
                 });
@@ -97,7 +90,7 @@ public class Board extends AppCompatActivity {
         startActivity(new Intent(this, BoardMembers.class));
     }
 
-    public void insertItem(Card card) {
+    public void insertItem(Board_Model_Main card) {
         cards.add(card);
         mAdapter.notifyDataSetChanged();
     }

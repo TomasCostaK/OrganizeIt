@@ -1,9 +1,7 @@
 package com.example.drawer;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +10,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.drawer.Adapters.Adapter;
+import com.example.drawer.Adapters.Adapter_null;
+import com.example.drawer.Models.Board_Model_Main;
+import com.example.drawer.Models.Card_Model_Main;
 
 import java.util.ArrayList;
 
@@ -29,17 +30,20 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
 
-    // Recycler
+    // Recycler Boards
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<Card> cards;
+    private ArrayList<Board_Model_Main> boards = new ArrayList<>();
+
+    // Recycler Cards
+    private ArrayList<Card_Model_Main> cards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        boards = new ArrayList<>();
         //Plus Button
 
         FloatingActionButton fbtn = (FloatingActionButton) findViewById(R.id.ftbn);
@@ -80,12 +84,11 @@ public class MainActivity extends AppCompatActivity {
                 create_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (control_recycler){
-                            buildRecyclerView();
-                        control_recycler = false;
-                        }
 
-                        insertItem(new Card(name_edit.getText().toString(), "+ Add Card"));
+                        createBoardList(name_edit.getText().toString());
+                        buildRecyclerView();
+                        notify_adapter();
+
                         creation_dialog.hide();
                     }
                 });
@@ -94,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Recycler
         buildRecyclerViewNull();
-        createCardList();
 
         // DRAWER
         mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -118,36 +120,42 @@ public class MainActivity extends AppCompatActivity {
         */
 
     }
+    // List of boards
+    public void createBoardList(String title) {
+        Board_Model_Main new_board = new Board_Model_Main();
+        new_board.setTitle(title);
+        insertBoard(new_board);
 
-    public void createCardList() {
-        cards = new ArrayList<>();
-        //cards.add(new Card("Favorite Boards", "Colors", "Finances", "Training"));
-        //cards.add(new Card("Personal Boards", "House Needs", "Finances", "Training"));
-        //cards.add(new Card("Design Team", "Colors", "Fonts", "Assets"));
     }
-
+    // recycler view boards
     public void buildRecyclerView() {
         mRecyclerView = findViewById(R.id.recyclerViewBoards);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new Adapter(cards);
-
+        mAdapter = new Adapter(this, boards);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
-
+    // initial recycler view
     public void buildRecyclerViewNull() {
         mRecyclerView = findViewById(R.id.recyclerViewBoards);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mAdapter = new Adapter_null();
-
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
+    // create new board
+    public void insertBoard(Board_Model_Main board) {
+        boards.add(board);
+    }
 
-    public void insertItem(Card card) {
+    // create new card
+    public void insertCard(Card_Model_Main card) {
         cards.add(card);
+    }
+
+    public void notify_adapter() {
         mAdapter.notifyDataSetChanged();
     }
 

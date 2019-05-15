@@ -1,4 +1,4 @@
-package com.example.drawer;
+package com.example.drawer.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.example.drawer.Adapters.Adapter;
+import com.example.drawer.R;
 
 public class Adapter_null extends RecyclerView.Adapter<Adapter.ExampleViewHolder> {
 

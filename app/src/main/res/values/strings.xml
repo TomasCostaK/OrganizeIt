@@ -3,6 +3,8 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="favorite_boards">Favorite Boards</string>
+    <string name="null_board">+ Add Card</string>
+    <string name="null_favorites">No Favorites Yet</string>
     <string name="title_activity_board">Board</string>
     <string name="board_name">Design Team</string>
 </resources>

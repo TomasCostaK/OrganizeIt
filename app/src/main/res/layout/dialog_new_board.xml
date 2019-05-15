@@ -39,7 +39,7 @@
         android:fontFamily="@font/montserrat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Member"
+        android:text="Add Member(optional)"
         android:textSize="25sp"
         android:id="@+id/member_text" />
 

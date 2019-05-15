@@ -20,9 +20,18 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".BoardMembers"
+            android:label="BoardSettings">>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".Board"
-            android:label="Board">
+            android:label="Tasks">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

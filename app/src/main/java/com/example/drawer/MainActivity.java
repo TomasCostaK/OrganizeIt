@@ -22,8 +22,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    // Recycler Reset control variable
+    private boolean control_recycler = true;
+
     // Drawer Variables
-    private String ola;
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
 
@@ -78,7 +80,12 @@ public class MainActivity extends AppCompatActivity {
                 create_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        insertItem(new Card(name_edit.getText().toString(), "+ Add Card", "+ Add card", "+ Add Card"));
+                        if (control_recycler){
+                            buildRecyclerView();
+                        control_recycler = false;
+                        }
+
+                        insertItem(new Card(name_edit.getText().toString(), "+ Add Card"));
                         creation_dialog.hide();
                     }
                 });
@@ -86,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Recycler
+        buildRecyclerViewNull();
         createCardList();
-        buildRecyclerView();
 
         // DRAWER
         mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -114,16 +121,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void createCardList() {
         cards = new ArrayList<>();
-        cards.add(new Card("Favorite Boards", "Colors", "Finances", "Training"));
-        cards.add(new Card("Personal Boards", "House Needs", "Finances", "Training"));
-        cards.add(new Card("Design Team", "Colors", "Fonts", "Assets"));
+        //cards.add(new Card("Favorite Boards", "Colors", "Finances", "Training"));
+        //cards.add(new Card("Personal Boards", "House Needs", "Finances", "Training"));
+        //cards.add(new Card("Design Team", "Colors", "Fonts", "Assets"));
     }
 
     public void buildRecyclerView() {
-        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recyclerViewBoards);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mAdapter = new Adapter(cards);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    public void buildRecyclerViewNull() {
+        mRecyclerView = findViewById(R.id.recyclerViewBoards);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new Adapter_null();
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);

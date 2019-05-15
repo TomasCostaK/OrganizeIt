@@ -20,15 +20,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ExampleViewHolder> {
 
         public TextView textView;
         public TextView item1;
-        public TextView item2;
-        public TextView item3;
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.favorite);
             item1 = itemView.findViewById(R.id.item1);
-            item2 = itemView.findViewById(R.id.item2);
-            item3 = itemView.findViewById(R.id.item3);
         }
     }
 
@@ -49,8 +45,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ExampleViewHolder> {
 
         exampleViewHolder.textView.setText(current_card.getmText());
         exampleViewHolder.item1.setText(current_card.getmItem1());
-        exampleViewHolder.item2.setText(current_card.getmItem2());
-        exampleViewHolder.item3.setText(current_card.getmItem3());
     }
 
     @Override

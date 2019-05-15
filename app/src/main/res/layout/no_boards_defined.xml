@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="8dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/no_board_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:text="You don't have any boards yet"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/no_board_im"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/new_board"
+
+            />
+
+
+        <TextView
+            android:id="@+id/no_board_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:text="Start by creating one!"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

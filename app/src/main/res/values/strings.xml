@@ -7,4 +7,6 @@
     <string name="null_favorites">No Favorites Yet</string>
     <string name="title_activity_board">Board</string>
     <string name="board_name">Design Team</string>
+    <string name="title">OrganizeIt</string>
+    <string name="sign_up"><u>Sign Up</u></string>
 </resources>

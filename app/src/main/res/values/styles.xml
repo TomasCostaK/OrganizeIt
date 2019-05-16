@@ -9,6 +9,14 @@
 
     </style>
 
+    <style name="AppTheme_NoBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/lobster</item>

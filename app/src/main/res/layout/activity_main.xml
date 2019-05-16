@@ -7,45 +7,53 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/main_page">
 
         <!-- Recycler boards -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewBoards"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="4dp"
             android:background="#D6D1CD"
-            android:scrollbars="vertical"
-            >
+            android:padding="4dp"
+            android:scrollbars="vertical">
+
         </android.support.v7.widget.RecyclerView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/ftbn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="24dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
-            app:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/plus_sign" />
+            android:src="@drawable/plus_sign"
+            app:backgroundTint="@color/colorPrimary" />
 
-        
     </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_container">
+    </FrameLayout>
 
 
     <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"
         app:itemTextColor="@color/colorPrimaryDark"
         app:menu="@menu/drawermenu">
-    </android.support.design.widget.NavigationView>
 
+    </android.support.design.widget.NavigationView>
 
 
 </android.support.v4.widget.DrawerLayout>

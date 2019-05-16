@@ -2,34 +2,51 @@ package com.example.drawer;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.drawer.Adapters.Adapter;
 import com.example.drawer.Adapters.Adapter_null;
+import com.example.drawer.Fragments.Account_fragment;
+import com.example.drawer.Fragments.Help_Fragment;
+import com.example.drawer.Fragments.Notifications_fragment;
+import com.example.drawer.Fragments.Stats_fragment;
 import com.example.drawer.Models.Board_Model_Main;
 import com.example.drawer.Models.Card_Model_Main;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     // Recycler Reset control variable
     private boolean control_recycler = true;
 
     // Drawer Variables
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
+
+    //Relative layout main
+    RelativeLayout relativeLayout;
+
+    // Frame Layout
+    FrameLayout frameLayout;
+
 
     // Recycler Boards
     private RecyclerView mRecyclerView;
@@ -46,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         boards = new ArrayList<>();
+        relativeLayout = (RelativeLayout) findViewById(R.id.main_page);
+        frameLayout = findViewById(R.id.fragment_container);
 
         //Plus Button
         FloatingActionButton fbtn = (FloatingActionButton) findViewById(R.id.ftbn);
@@ -111,16 +130,49 @@ public class MainActivity extends AppCompatActivity {
         //ACTION BAR
         getSupportActionBar().setTitle("OrganizeIt");
 
-        //Favorite List view
-        /*ListView fav_view = (ListView) findViewById(R.id.fav_view);
-        ArrayList<String> fav_boards = new ArrayList<>();
-        fav_boards.add("Colors");
-        fav_boards.add("Finances");
-        fav_boards.add("Training");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fav_boards);
-        fav_view.setAdapter(arrayAdapter);
-        */
+        //Navigation View
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+
+            case R.id.board_dr:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Stats_fragment()).commit();
+            
+            case R.id.stats_dr:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Stats_fragment()).commit();
+                break;
+
+            case R.id.account_dr:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Account_fragment()).commit();
+                break;
+
+            case R.id.notf_dr:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Notifications_fragment()).commit();
+                break;
+
+            case R.id.help_dr:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Help_Fragment()).commit();
+                break;
+
+            case R.id.logout_dr:
+                Intent logout = new Intent(MainActivity.this, Login.class);
+                startActivity(logout);
+                break;
+        }
+
+        mDrawerlayout.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 
     // List of boards

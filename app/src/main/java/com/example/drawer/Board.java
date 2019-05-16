@@ -6,29 +6,38 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.drawer.Adapters.Adapter_Tasks;
 import com.example.drawer.Models.Board_Model_Main;
+import com.example.drawer.Models.Card_Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Board extends AppCompatActivity {
     // Drawer Variables
     private DrawerLayout mDrawerlayout;
     private ActionBarDrawerToggle mToggle;
 
-    // Recycler
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private ArrayList<Board_Model_Main> cards;
-
+    List<Card_Task> lstCards ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tasks);
+
+        lstCards = new ArrayList<>();
+        lstCards.add(new Card_Task("The Vegetarian","This is the description of this card",R.drawable.mountain));
+        lstCards.add(new Card_Task("Task 2","This iption of this card",R.drawable.mountain));
+        lstCards.add(new Card_Task("Do things","this card",R.drawable.mountain));
+
+        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerView_card);
+        Adapter_Tasks myAdapter = new Adapter_Tasks(this,lstCards);
+        myrv.setLayoutManager(new GridLayoutManager(this,3));
+        myrv.setAdapter(myAdapter);
 
         //Plus Button
 
@@ -75,24 +84,19 @@ public class Board extends AppCompatActivity {
         });
 */
         // DRAWER
-        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_tasks);
+        /*mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_tasks);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout,R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
-        mToggle.syncState();
+        mToggle.syncState(); */
         // END DRAWER
 
         //ACTION BAR
-        getSupportActionBar().setTitle("Design Board");
+        //getSupportActionBar().setTitle("Design Board");
 
     }
 
     public void btnGoSettings(View view){
-        startActivity(new Intent(this, BoardMembers.class));
-    }
-
-    public void insertItem(Board_Model_Main card) {
-        cards.add(card);
-        mAdapter.notifyDataSetChanged();
+        //startActivity(new Intent(this, BoardMembers.class));
     }
 
 }

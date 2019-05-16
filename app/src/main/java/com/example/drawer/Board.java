@@ -30,13 +30,17 @@ public class Board extends AppCompatActivity {
         setContentView(R.layout.tasks);
 
         lstCards = new ArrayList<>();
-        lstCards.add(new Card_Task("The Vegetarian","This is the description of this card",R.drawable.mountain));
-        lstCards.add(new Card_Task("Task 2","This iption of this card",R.drawable.mountain));
-        lstCards.add(new Card_Task("Do things","this card",R.drawable.mountain));
+        lstCards.add(new Card_Task("Colors","Usar este guia visual",R.drawable.mountain));
+        lstCards.add(new Card_Task("Compras","Comprar estas coisas",R.drawable.mountain));
+        lstCards.add(new Card_Task("Projetos","Projetos Universidade",R.drawable.mountain));
+        lstCards.add(new Card_Task("Colors","Usar este guia visual",R.drawable.mountain));
+        lstCards.add(new Card_Task("Compras","Comprar estas coisas",R.drawable.mountain));
 
-        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerView_card);
+
+
+        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclercards);
         Adapter_Tasks myAdapter = new Adapter_Tasks(this,lstCards);
-        myrv.setLayoutManager(new GridLayoutManager(this,3));
+        myrv.setLayoutManager(new GridLayoutManager(this,2));
         myrv.setAdapter(myAdapter);
 
         //Plus Button
@@ -84,19 +88,20 @@ public class Board extends AppCompatActivity {
         });
 */
         // DRAWER
-        /*mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_tasks);
+        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer_tasks);
         mToggle = new ActionBarDrawerToggle(this, mDrawerlayout,R.string.open, R.string.close);
         mDrawerlayout.addDrawerListener(mToggle);
-        mToggle.syncState(); */
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // END DRAWER
 
         //ACTION BAR
-        //getSupportActionBar().setTitle("Design Board");
+        getSupportActionBar().setTitle("Design Board");
 
     }
 
     public void btnGoSettings(View view){
-        //startActivity(new Intent(this, BoardMembers.class));
+        startActivity(new Intent(this, BoardMembers.class));
     }
 
 }

@@ -20,17 +20,21 @@ public class Task_Activity extends AppCompatActivity {
         tvdescription = (TextView) findViewById(R.id.cardDesc);
         img = (ImageView) findViewById(R.id.cardthumbnail);
 
-        // Recieve data
+        // Receive data
         Intent intent = getIntent();
         String Title = intent.getExtras().getString("Title");
         String Description = intent.getExtras().getString("Description");
         int image = intent.getExtras().getInt("Thumbnail") ;
 
         // Setting values
-
         tvtitle.setText(Title);
         tvdescription.setText(Description);
         img.setImageResource(image);
+
+        //actionbar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(Title);
 
     }
 }

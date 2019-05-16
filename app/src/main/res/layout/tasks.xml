@@ -10,6 +10,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:id="@+id/recyclercards">
 
     </android.support.v7.widget.RecyclerView>
@@ -22,12 +23,12 @@
             android:id="@+id/ftbn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginRight="24dp"
             android:layout_marginBottom="24dp"
-            app:backgroundTint="@color/colorPrimary"
-            android:src="@drawable/plus_sign" />
+            android:src="@drawable/plus_sign"
+            app:backgroundTint="@color/colorPrimary" />
 
     </RelativeLayout>
 
@@ -35,7 +36,7 @@
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
+        android:layout_gravity="end"
         app:headerLayout="@layout/headertasks"
         app:itemTextColor="@color/colorPrimaryDark"
         app:menu="@menu/drawertasks">

@@ -40,7 +40,7 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         holder.card_title.setText(mData.get(position).getTitle());
-        holder.card_thumbnail.setImageResource(mData.get(position).getThumbnail());
+        holder.card_description.setText(mData.get(position).getDescription());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,16 +69,17 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView card_title;
+        TextView card_description;
         ImageView card_thumbnail;
         CardView cardView ;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            card_title = (TextView) itemView.findViewById(R.id.card_text) ;
+            card_title = (TextView) itemView.findViewById(R.id.card_name) ;
+            card_description = (TextView) itemView.findViewById(R.id.card_description) ;
             card_thumbnail = (ImageView) itemView.findViewById(R.id.card_img);
             cardView = (CardView) itemView.findViewById(R.id.cardviewid);
-
 
         }
     }

@@ -30,17 +30,6 @@
                 android:fontFamily="@font/montserrat"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
-            <!--
-            <ImageView
-                android:id="@+id/settings_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="center"
-                android:scaleX="0.4"
-                android:scaleY="0.4"
-                app:srcCompat="@drawable/ic_settings" />
-               -->
-
 
         </LinearLayout>
 

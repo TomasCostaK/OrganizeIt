@@ -1,16 +1,16 @@
-package com.example.drawer;
+package com.example.drawer.Fragments;
 
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,16 +20,13 @@ import com.example.drawer.Adapters.Adapter;
 import com.example.drawer.Adapters.Adapter_null;
 import com.example.drawer.Models.Board_Model_Main;
 import com.example.drawer.Models.Card_Model_Main;
+import com.example.drawer.R;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-    // Recycler Reset control variable
-    private boolean control_recycler = true;
+public class Board_Fragment extends Fragment {
 
-    // Drawer Variables
-    private DrawerLayout mDrawerlayout;
-    private ActionBarDrawerToggle mToggle;
+    private View v;
 
     // Recycler Boards
     private RecyclerView mRecyclerView;
@@ -40,21 +37,20 @@ public class MainActivity extends AppCompatActivity {
     // Recycler Cards
     private ArrayList<Card_Model_Main> cards;
 
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        boards = new ArrayList<>();
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        v = inflater.inflate(R.layout.fragment_board, container, false);
 
-        //Plus Button
-        FloatingActionButton fbtn = (FloatingActionButton) findViewById(R.id.ftbn);
+        buildRecyclerViewNull();
+
+        FloatingActionButton fbtn = (FloatingActionButton) v.findViewById(R.id.ftbn_new);
         fbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 // Modal para criar boards e teams
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
                 View mView = getLayoutInflater().inflate(R.layout.dialog_new_board, null);
                 TextView create_board = (TextView) mView.findViewById(R.id.create_board);
                 final TextView name_text = (TextView) mView.findViewById(R.id.name_text);
@@ -79,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 invite_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "Inivitation Sent", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Inivitation Sent", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -97,33 +93,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Recycler
-        buildRecyclerViewNull();
-
-        // DRAWER
-        mDrawerlayout = (DrawerLayout) findViewById(R.id.drawer);
-        mToggle = new ActionBarDrawerToggle(this, mDrawerlayout,R.string.open, R.string.close);
-        mDrawerlayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // END DRAWER
-
-        //ACTION BAR
-        getSupportActionBar().setTitle("OrganizeIt");
-
-        //Favorite List view
-        /*ListView fav_view = (ListView) findViewById(R.id.fav_view);
-        ArrayList<String> fav_boards = new ArrayList<>();
-        fav_boards.add("Colors");
-        fav_boards.add("Finances");
-        fav_boards.add("Training");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fav_boards);
-        fav_view.setAdapter(arrayAdapter);
-        */
-
+        return v;
     }
 
-    // List of boards
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    public void buildRecyclerViewNull() {
+        mRecyclerView = v.findViewById(R.id.recyclerViewBoards_new);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mAdapter = new Adapter_null();
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
     public void createBoardList(String title) {
         Board_Model_Main new_board = new Board_Model_Main();
         new_board.setTitle(title);
@@ -132,22 +118,14 @@ public class MainActivity extends AppCompatActivity {
     }
     // recycler view boards
     public void buildRecyclerView() {
-        mRecyclerView = findViewById(R.id.recyclerViewBoards);
+        mRecyclerView = v.findViewById(R.id.recyclerViewBoards_new);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new Adapter(this, boards);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mAdapter = new Adapter(getActivity(), boards);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
-    // initial recycler view
-    public void buildRecyclerViewNull() {
-        mRecyclerView = findViewById(R.id.recyclerViewBoards);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mAdapter = new Adapter_null();
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-    }
+
     // create new board
     public void insertBoard(Board_Model_Main board) {
         boards.add(board);
@@ -161,13 +139,4 @@ public class MainActivity extends AppCompatActivity {
     public void notify_adapter() {
         mAdapter.notifyDataSetChanged();
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(mToggle.onOptionsItemSelected(item)){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 }

@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Login"
+        <activity
+            android:name=".Login"
             android:theme="@style/AppTheme_NoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,26 +20,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Task_Activity">
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="MainDrawer">
-            <intent-filter>
+        <activity android:name=".NewMainActivity"
+            android:label="NewMainActivity">
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".Task_Activity">
         </activity>
         <activity
             android:name=".BoardMembers"
             android:label="BoardSettings">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Board"

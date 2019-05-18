@@ -80,8 +80,9 @@ public class Adapter_Card extends RecyclerView.Adapter<Adapter_Card.MyViewHolder
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cards_list_recycler, viewGroup, false);
-        return new MyViewHolder(view);
+        //View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cards_list_recycler, viewGroup, false);
+        //return new MyViewHolder(view);
+        return null;
     }
 
     @Override
@@ -99,7 +100,7 @@ public class Adapter_Card extends RecyclerView.Adapter<Adapter_Card.MyViewHolder
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.card = itemView.findViewById(R.id.card1);
+            //this.card = itemView.findViewById(R.id.card1);
         }
     }
 

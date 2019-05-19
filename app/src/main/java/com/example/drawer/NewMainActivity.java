@@ -57,6 +57,7 @@ public class NewMainActivity extends AppCompatActivity implements NavigationView
             case R.id.new_stats_dr:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_new,
                         new Stats_fragment()).commit();
+                getSupportActionBar().setTitle("Invites");
                 break;
 
             case R.id.new_account_dr:

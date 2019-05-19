@@ -21,15 +21,37 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ExampleViewHolder> {
     ArrayList<Card_Model_Main> cardArray = new ArrayList<>();
     Context context;
 
+    private onItemClickListener mListener;
+
+    public interface onItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener) {
+        mListener = listener;
+    };
+
     public static class ExampleViewHolder extends RecyclerView.ViewHolder {
 
         RecyclerView recyclerView;
         public TextView textView;
 
-        public ExampleViewHolder(View itemView) {
+        public ExampleViewHolder(View itemView, final onItemClickListener listener) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.favorite);
             recyclerView = (RecyclerView) itemView.findViewById(R.id.recyclerView_card);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null) {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -41,7 +63,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ExampleViewHolder> {
     @Override
     public ExampleViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card, viewGroup, false);
-        ExampleViewHolder evh = new ExampleViewHolder(v);
+        ExampleViewHolder evh = new ExampleViewHolder(v, mListener);
         return evh;
     }
 

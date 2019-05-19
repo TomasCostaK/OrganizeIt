@@ -1,6 +1,7 @@
 package com.example.drawer.Fragments;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.drawer.Adapters.Adapter;
 import com.example.drawer.Adapters.Adapter_null;
+import com.example.drawer.Board;
 import com.example.drawer.Models.Board_Model_Main;
 import com.example.drawer.Models.Card_Model_Main;
 import com.example.drawer.R;
@@ -30,7 +32,8 @@ public class Board_Fragment extends Fragment {
 
     // Recycler Boards
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private Adapter_null mAdapter;
+    private Adapter adapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<Board_Model_Main> boards = new ArrayList<>();
 
@@ -50,46 +53,7 @@ public class Board_Fragment extends Fragment {
             public void onClick(View v) {
 
                 // Modal para criar boards e teams
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
-                View mView = getLayoutInflater().inflate(R.layout.dialog_new_board, null);
-                TextView create_board = (TextView) mView.findViewById(R.id.create_board);
-                final TextView name_text = (TextView) mView.findViewById(R.id.name_text);
-                TextView member_text = (TextView) mView.findViewById(R.id.member_text);
-                final EditText name_edit = (EditText) mView.findViewById(R.id.name_edit);
-                TextView member_edit = (TextView) mView.findViewById(R.id.member_edit);
-                Button cancel_btn = (Button) mView.findViewById(R.id.cancel_btn);
-                Button create_btn = (Button) mView.findViewById(R.id.create_btn);
-                Button invite_btn = (Button) mView.findViewById(R.id.invite_btn);
-
-                mBuilder.setView(mView);
-                final AlertDialog creation_dialog = mBuilder.create();
-                creation_dialog.show();
-
-                cancel_btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        creation_dialog.hide();
-                    }
-                });
-
-                invite_btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getActivity(), "Inivitation Sent", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                create_btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        createBoardList(name_edit.getText().toString());
-                        buildRecyclerView();
-                        notify_adapter();
-
-                        creation_dialog.hide();
-                    }
-                });
+                createBoard();
             }
         });
 
@@ -101,13 +65,64 @@ public class Board_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    public void createBoard() {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+        View mView = getLayoutInflater().inflate(R.layout.dialog_new_board, null);
+        TextView create_board = (TextView) mView.findViewById(R.id.create_board);
+        final TextView name_text = (TextView) mView.findViewById(R.id.name_text);
+        TextView member_text = (TextView) mView.findViewById(R.id.member_text);
+        final EditText name_edit = (EditText) mView.findViewById(R.id.name_edit);
+        TextView member_edit = (TextView) mView.findViewById(R.id.member_edit);
+        Button cancel_btn = (Button) mView.findViewById(R.id.cancel_btn);
+        Button create_btn = (Button) mView.findViewById(R.id.create_btn);
+        Button invite_btn = (Button) mView.findViewById(R.id.invite_btn);
+
+        mBuilder.setView(mView);
+        final AlertDialog creation_dialog = mBuilder.create();
+        creation_dialog.show();
+
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                creation_dialog.hide();
+            }
+        });
+
+        invite_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Inivitation Sent", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        create_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                createBoardList(name_edit.getText().toString());
+                buildRecyclerView();
+                notify_adapter();
+
+                creation_dialog.hide();
+            }
+        });
+    }
+
     public void buildRecyclerViewNull() {
         mRecyclerView = v.findViewById(R.id.recyclerViewBoards_new);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mAdapter = new Adapter_null();
+        mAdapter = new Adapter_null(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(new Adapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                createBoard();
+            }
+        });
+
     }
 
     public void createBoardList(String title) {
@@ -121,9 +136,19 @@ public class Board_Fragment extends Fragment {
         mRecyclerView = v.findViewById(R.id.recyclerViewBoards_new);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mAdapter = new Adapter(getActivity(), boards);
+        adapter = new Adapter(getActivity(), boards);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new Adapter.onItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                boards.get(position);
+                Intent intent = new Intent(getContext(), Board.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     // create new board

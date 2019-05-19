@@ -4,7 +4,7 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/new_board_dr" android:title="Boards" android:icon="@drawable/notification_icon"/>
-        <item android:id="@+id/new_stats_dr" android:title="Statistics" android:icon="@drawable/stats_icon"/>
+        <item android:id="@+id/new_stats_dr" android:title="Invites" android:icon="@drawable/ic_email_black_24dp"/>
         <item android:id="@+id/new_account_dr" android:title="Account" android:icon="@drawable/account_icon"/>
         <item android:id="@+id/new_notf_dr" android:title="Notifications" android:icon="@drawable/notification_icon"/>
         <item android:id="@+id/new_help_dr" android:title="Help" android:icon="@drawable/help_icon"/>

@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@id/card_img"
             android:layout_alignBottom="@id/card_img"
-            android:padding="10dp">
+            android:padding="4dp">
 
             <Button
                 android:id="@+id/delete_card"
@@ -62,7 +62,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:textAllCaps="false"
-                android:layout_marginRight="10dp"
                 android:text="Delete"/>
 
             <Button

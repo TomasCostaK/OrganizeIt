@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/Members" android:title="Members" android:icon="@drawable/ic_backup_black_24dp" ></item>
-    <item android:id="@+id/background" android:title="Background" android:icon="@drawable/ic_backup_black_24dp"></item>
-    <item android:id="@+id/changeName" android:title="Change Name" android:icon="@drawable/ic_backup_black_24dp" ></item>
-    <item android:id="@+id/unfavourite" android:title="Unfavourite" android:icon="@drawable/ic_backup_black_24dp"></item>
-    <item android:id="@+id/share" android:title="Share" android:icon="@drawable/ic_backup_black_24dp"></item>
-    <item android:id="@+id/delete" android:title="Delete" android:icon="@drawable/ic_backup_black_24dp"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_settings" android:title="Settings" app:showAsAction="never" android:icon="@drawable/settings_white" ></item>
+    <item android:id="@+id/menu_share" android:title="Share" app:showAsAction="never" android:icon="@drawable/ic_share"></item>
+    <item android:id="@+id/menu_delete" android:title="Delete" app:showAsAction="never" android:icon="@drawable/ic_delete"></item>
 </menu>

@@ -36,7 +36,7 @@ public class NewMainActivity extends AppCompatActivity implements NavigationView
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("OrganizeIt");
+        getSupportActionBar().setTitle("Boards");
 
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_new,
@@ -51,6 +51,7 @@ public class NewMainActivity extends AppCompatActivity implements NavigationView
             case R.id.new_board_dr:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_new,
                         new Board_Fragment()).commit();
+                getSupportActionBar().setTitle("Boards");
                 break;
 
             case R.id.new_stats_dr:
@@ -61,16 +62,19 @@ public class NewMainActivity extends AppCompatActivity implements NavigationView
             case R.id.new_account_dr:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_new,
                         new Account_fragment()).commit();
+                getSupportActionBar().setTitle("Account Settings");
                 break;
 
             case R.id.new_notf_dr:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_new,
                         new Notifications_fragment()).commit();
+                getSupportActionBar().setTitle("Notifications Settings");
                 break;
 
             case R.id.new_help_dr:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_new,
                         new Help_Fragment()).commit();
+                getSupportActionBar().setTitle("Help");
                 break;
 
             case R.id.new_logout_dr:

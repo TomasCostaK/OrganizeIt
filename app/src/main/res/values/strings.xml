@@ -9,4 +9,8 @@
     <string name="board_name">Design Team</string>
     <string name="title">OrganizeIt</string>
     <string name="sign_up"><u>Sign Up</u></string>
+
+    <string name="invite_notf">
+        ola \n ola
+    </string>
 </resources>

@@ -1,15 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NOTIFICATIONS"
-        android:textSize="50sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAlignment="center"
-        android:layout_gravity="center"/>
+
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/notf_inv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invites Notifications"
+            android:fontFamily="@font/montserrat"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Receive a notification when someone \n sends you an invite"/>
+
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/notf_lines"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/notf_dead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deadline Notifications"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Receive a notification when a dealine \n is not fulfilled"/>
+
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/notf_lines"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/notf_colb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Collaborator Notifications"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Receive a notification when a collaborator \n accepts or declines your invite"/>
+
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/notf_lines"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/notf_off"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Turn Off All Notifications"
+        android:textStyle="bold"
+        android:textColor="#f44b42"
+        android:fontFamily="@font/montserrat"
+        android:layout_margin="20dp"
+        android:background="@drawable/notf_off" />
 
 </LinearLayout>

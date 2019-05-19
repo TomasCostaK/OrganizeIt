@@ -143,20 +143,13 @@ public class Board extends AppCompatActivity {
 
     public void editCard(View view){
         android.app.AlertDialog.Builder mBuilder = new android.app.AlertDialog.Builder(Board.this);
-        View mView = getLayoutInflater().inflate(R.layout.creating_card, null);
-        TextView create_card = (TextView) mView.findViewById(R.id.creating_text);
+        View mView = getLayoutInflater().inflate(R.layout.deleting_card, null);
 
-        final TextView card_text = (TextView) mView.findViewById(R.id.card_text);
-        final EditText card_edit = (EditText) mView.findViewById(R.id.card_edit);
+        final TextView card1 = (TextView) mView.findViewById(R.id.deletecardtitle);
+        final TextView card2 = (TextView) mView.findViewById(R.id.deletecardtext);
 
-        TextView description_text = (TextView) mView.findViewById(R.id.description_text);
-        final EditText description_edit = (EditText) mView.findViewById(R.id.description_edit);
-
-        TextView tasks_text = (TextView) mView.findViewById(R.id.tasks_text);
-        final EditText tasks_edit = (EditText) mView.findViewById(R.id.tasks_edit);
-
-        Button cancel_btn = (Button) mView.findViewById(R.id.cancel_card_btn);
-        Button create_btn = (Button) mView.findViewById(R.id.create_btn);
+        Button cancel_btn = (Button) mView.findViewById(R.id.cancel_btn);
+        Button delete_btn = (Button) mView.findViewById(R.id.deletecard_btn);
 
         mBuilder.setView(mView);
         final AlertDialog creation_dialog = mBuilder.create();
@@ -169,16 +162,16 @@ public class Board extends AppCompatActivity {
             }
         });
 
-        create_btn.setOnClickListener(new View.OnClickListener() {
+        delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Criar nova card
-                createCard(card_edit.getText().toString(), description_edit.getText().toString(), tasks_edit.getText().toString());
+                deleteInstanceCard(v);
                 creation_dialog.hide();
             }
 
-            private void createCard(String name, String desc, String tasks) {
-                lstCards.add(new Card_Task(name, desc, tasks, R.drawable.mountain));
+            private void deleteInstanceCard(View v) {
+                lstCards.remove(v);
             }
         });
     }
@@ -213,18 +206,39 @@ public class Board extends AppCompatActivity {
     }
 
     private void confirmDelete() {
+        final Intent actv = new Intent(this, NewMainActivity.class);
         android.app.AlertDialog.Builder mBuilder = new android.app.AlertDialog.Builder(Board.this);
-        View mView = getLayoutInflater().inflate(R.layout.dialog_new_board, null);
-        TextView create_board = (TextView) mView.findViewById(R.id.create_board);
-        final TextView name_text = (TextView) mView.findViewById(R.id.name_text);
-        TextView member_text = (TextView) mView.findViewById(R.id.member_text);
-        final EditText name_edit = (EditText) mView.findViewById(R.id.name_edit);
-        TextView member_edit = (TextView) mView.findViewById(R.id.member_edit);
+        View mView = getLayoutInflater().inflate(R.layout.deleting_board, null);
+
+        final TextView card1 = (TextView) mView.findViewById(R.id.deleteboardtitle);
+        final TextView card2 = (TextView) mView.findViewById(R.id.deleteboardtext);
+
         Button cancel_btn = (Button) mView.findViewById(R.id.cancel_btn);
-        Button create_btn = (Button) mView.findViewById(R.id.create_btn);
+        Button delete_btn = (Button) mView.findViewById(R.id.deleteboard_btn);
 
         mBuilder.setView(mView);
         final AlertDialog creation_dialog = mBuilder.create();
         creation_dialog.show();
+
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                creation_dialog.hide();
+            }
+        });
+
+        delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Criar nova card
+                deleteInstanceBoard(v);
+                Toast.makeText(Board.this, "Board apagada com sucesso", Toast.LENGTH_SHORT).show();
+                startActivity(actv);
+            }
+
+            private void deleteInstanceBoard(View v) {
+                lstCards.remove(v);
+            }
+        });
     }
 }

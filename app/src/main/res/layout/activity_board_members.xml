@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
@@ -35,14 +35,17 @@
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Change board name" />
+                        android:hint="Change board name"
+                        android:id="@+id/board_text"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/buttonChange"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_edit_black_24dp" />
+                    android:text="Change"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="changeBoardName"/>
 
             </LinearLayout>
 
@@ -64,6 +67,7 @@
                     android:layout_height="match_parent">
 
                     <android.support.design.widget.TextInputEditText
+                        android:id="@+id/desc_text"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:hint="Change board description" />
@@ -73,7 +77,9 @@
                     android:id="@+id/buttonChangeDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_edit_black_24dp" />
+                    android:text="Change"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="changeBoardDesc"/>
 
             </LinearLayout>
 
@@ -114,6 +120,7 @@
 
                         <ImageButton
                             android:id="@+id/deleteButton1"
+                            android:onClick="deleteCollab"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:src="@drawable/delete" />
@@ -137,6 +144,7 @@
                         <ImageButton
                             android:id="@+id/deleteButton2"
                             android:layout_width="wrap_content"
+                            android:onClick="deleteCollab"
                             android:layout_height="match_parent"
                             android:src="@drawable/delete" />
 
@@ -160,6 +168,7 @@
                             android:id="@+id/deleteButton3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:onClick="deleteCollab"
                             android:src="@drawable/delete" />
 
                     </LinearLayout>

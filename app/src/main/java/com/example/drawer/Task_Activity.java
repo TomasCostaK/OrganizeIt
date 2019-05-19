@@ -33,7 +33,6 @@ public class Task_Activity extends AppCompatActivity {
 
         //actionbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(Title);
 
     }

@@ -17,11 +17,11 @@
             android:id="@+id/card_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/darker"/>
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/card_name"
-            android:textColor="@color/white"
+            android:textColor="@color/darker"
             android:textStyle="bold"
             android:fontFamily="@font/montserrat"
             android:textSize="23sp"
@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/card_description"
-            android:textColor="@color/white"
+            android:textColor="@color/darker"
             android:textStyle="bold"
             android:fontFamily="@font/montserrat"
             android:textSize="15sp"
@@ -70,7 +70,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-
                 android:textAllCaps="false"
                 android:text="Edit"/>
 

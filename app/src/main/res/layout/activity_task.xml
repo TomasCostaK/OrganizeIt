@@ -47,6 +47,25 @@
                 android:layout_height="wrap_content"
                 android:text="Description"/>
 
+            <TextView
+                android:id="@+id/tasks_Title"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tasks"/>
+
+            <TextView
+                android:id="@+id/cardTasks"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tasks"/>
+
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

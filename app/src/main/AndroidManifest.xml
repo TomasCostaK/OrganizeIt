@@ -29,15 +29,33 @@
             </intent-filter> -->
         </activity>
         <activity
-            android:name=".Task_Activity">
+            android:name=".Task_Activity"
+            android:parentActivityName="com.example.drawer.Board" >
+            <!-- Parent activity meta-data to support API level 4+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.drawer.Board" />
+
         </activity>
         <activity
             android:name=".BoardMembers"
-            android:label="BoardSettings">
+            android:label="BoardSettings"
+            android:parentActivityName="com.example.drawer.Board" >
+            <!-- Parent activity meta-data to support API level 4+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.drawer.Board" />
+
         </activity>
         <activity
             android:name=".Board"
-            android:label="Tasks">
+            android:label="Tasks"
+            android:parentActivityName="com.example.drawer.NewMainActivity" >
+            <!-- Parent activity meta-data to support API level 4+ -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.drawer.NewMainActivity" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

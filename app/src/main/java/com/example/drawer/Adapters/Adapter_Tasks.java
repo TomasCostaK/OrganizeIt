@@ -41,6 +41,7 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
 
         holder.card_title.setText(mData.get(position).getTitle());
         holder.card_description.setText(mData.get(position).getDescription());
+        holder.card_tasks.setText(mData.get(position).getDescription());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +51,7 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
                 // passing data to the card activity
                 intent.putExtra("Title",mData.get(position).getTitle());
                 intent.putExtra("Description",mData.get(position).getDescription());
+                intent.putExtra("Tasks",mData.get(position).getTasks());
                 intent.putExtra("Thumbnail",mData.get(position).getThumbnail());
                 // start the activity
                 mContext.startActivity(intent);
@@ -71,6 +73,7 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
         TextView card_title;
         TextView card_description;
         ImageView card_thumbnail;
+        TextView card_tasks;
         CardView cardView ;
 
         public MyViewHolder(View itemView) {
@@ -79,6 +82,7 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
             card_title = (TextView) itemView.findViewById(R.id.card_name) ;
             card_description = (TextView) itemView.findViewById(R.id.card_description) ;
             card_thumbnail = (ImageView) itemView.findViewById(R.id.card_img);
+            card_tasks = (TextView) itemView.findViewById(R.id.card_tasks) ;
             cardView = (CardView) itemView.findViewById(R.id.cardviewid);
 
         }

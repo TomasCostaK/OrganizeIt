@@ -3,18 +3,17 @@ package com.example.drawer.Models;
 import java.util.ArrayList;
 
 public class Card_Task {
-    private String Title ;
-    private String Description ;
-    private ArrayList<String> tasks;
+    private String Title, Description, Tasks ;
     private int Thumbnail ;
 
     public Card_Task() {
     }
 
 
-    public Card_Task(String title, String description, int thumbnail) {
+    public Card_Task(String title, String description, String tasks, int thumbnail) {
         Title = title;
         Description = description;
+        Tasks = tasks;
         Thumbnail = thumbnail;
     }
 
@@ -23,8 +22,8 @@ public class Card_Task {
         return Title;
     }
 
-    public ArrayList<String> getTasks() {
-        return tasks;
+    public String getTasks() {
+        return Tasks;
     }
 
     public String getDescription() {
@@ -35,13 +34,12 @@ public class Card_Task {
         return Thumbnail;
     }
 
-
     public void setTitle(String title) {
         Title = title;
     }
 
-    public void setTasks(ArrayList<String> category) {
-        tasks = category;
+    public void setTasks(String category) {
+        Tasks = category;
     }
 
     public void setDescription(String description) {

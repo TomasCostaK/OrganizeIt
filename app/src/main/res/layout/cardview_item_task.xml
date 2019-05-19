@@ -35,6 +35,12 @@
             android:text="Title"/>
 
         <TextView
+            android:id="@+id/card_tasks"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Tasks"/>
+
+        <TextView
             android:id="@+id/card_description"
             android:textColor="@color/darker"
             android:textStyle="bold"
@@ -62,7 +68,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:textAllCaps="false"
-                android:text="Delete"/>
+                android:text="Delete"
+                android:onClick="deleteCard"
+                />
 
             <Button
                 android:id="@+id/edit_card"
@@ -70,7 +78,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:textAllCaps="false"
-                android:text="Edit"/>
+                android:text="Edit"
+                android:onClick="editCard"
+                />
 
         </LinearLayout>
 

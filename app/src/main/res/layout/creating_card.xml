@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_margin="25dp"
-    android:padding="25dp">
+    android:padding="20dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,6 +51,7 @@
         android:lines="2"/>
 
     <TextView
+        android:id="@+id/tasks_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tasks:"
@@ -59,6 +60,13 @@
         android:textSize="20sp"
         />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=""
+        android:id="@+id/tasks_edit"
+        android:maxLines="5"
+        android:lines="4"/>
 
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -68,7 +76,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/cancel_btn"
+            android:id="@+id/cancel_card_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"

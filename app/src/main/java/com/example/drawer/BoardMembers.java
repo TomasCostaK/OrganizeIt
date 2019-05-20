@@ -7,10 +7,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class BoardMembers extends AppCompatActivity {
+
+    ImageButton deleteButton3;
+    TextView collab3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,9 @@ public class BoardMembers extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Board Settings");
+
+        collab3 = (TextView) findViewById(R.id.collab3);
+        deleteButton3 = (ImageButton) findViewById(R.id.deleteButton3);
     }
 
 
@@ -69,6 +77,8 @@ public class BoardMembers extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //Delete member
+                    collab3.setVisibility(View.INVISIBLE);
+                    deleteButton3.setVisibility(View.INVISIBLE);
                     deleteInstanceCard(v);
                     creation_dialog.hide();
                 }

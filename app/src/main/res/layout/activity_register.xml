@@ -40,7 +40,23 @@
         android:layout_weight="1">
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/email_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:hint="example@mail.com"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:background="@drawable/editlogin"
+            android:drawableLeft="@drawable/editloginmail"
+            android:drawablePadding="10dp"
+            android:maxLines="1"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:id="@+id/username_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
@@ -55,11 +71,11 @@
             android:layout_marginBottom="20dp"/>
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/password_register"
             android:layout_width="match_parent"
             android:fontFamily="@font/montserrat"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="********"
             android:inputType="textPassword"
             android:textColorHint="@color/colorPrimaryDark"
             android:background="@drawable/editlogin"
@@ -70,20 +86,20 @@
             />
 
         <Button
-            android:id="@+id/signIn"
+            android:id="@+id/signUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/white"
             android:fontFamily="@font/montserrat"
-            android:text="Sign In"
+            android:text="Sign Up"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             android:textSize="20sp"/>
-
+        <!--
         <TextView
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
@@ -95,7 +111,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/signUptext"
+            android:id="@+id/signUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
@@ -103,7 +119,7 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textSize="18sp" />
-
+            -->
 
     </LinearLayout>
 

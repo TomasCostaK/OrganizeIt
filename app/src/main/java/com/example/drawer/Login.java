@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class Login extends AppCompatActivity {
 
@@ -15,10 +18,14 @@ public class Login extends AppCompatActivity {
     private EditText username;
     private EditText password;
 
+    private TextView signUptext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        signUptext = findViewById(R.id.signUptext);
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -30,6 +37,14 @@ public class Login extends AppCompatActivity {
 
                 if(validate_username() && validate_password())
                     openMainPage();
+            }
+        });
+
+        signUptext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signUp = new Intent(Login.this, Register.class);
+                startActivity(signUp);
             }
         });
     }

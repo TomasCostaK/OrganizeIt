@@ -6,6 +6,8 @@
     android:padding="20dp">
 
     <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="You currently have no invites"
@@ -34,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="20dp"
         android:padding="20dp">
 
         <LinearLayout
@@ -51,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="Avatar"
+                    android:text="Contact1"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -60,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Your profile picture will be used \n in your shared boards" />
+                    android:text="+435 353532322 \n contact1@mail.com" />
 
             </LinearLayout>
 
@@ -102,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="Avatar"
+                    android:text="Contact2"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -111,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Your profile picture will be used \n in your shared boards" />
+                    android:text="+435 827164632 \n contact2@mail.com" />
 
             </LinearLayout>
 
@@ -154,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="Avatar"
+                    android:text="Contact3"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -163,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Your profile picture will be used \n in your shared boards" />
+                    android:text="+435 417653452 \n contact3@mail.com" />
 
             </LinearLayout>
 
@@ -183,58 +186,6 @@
             android:background="@drawable/notf_lines" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Avatar"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Your profile picture will be used \n in your shared boards" />
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_marginRight="20dp"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/profilepic" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/notf_lines" />
-
-    </LinearLayout>
-
 
 
 </LinearLayout>

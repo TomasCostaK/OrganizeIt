@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HELP"
-        android:textSize="50sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAlignment="center"
-        android:layout_gravity="center"/>
+        android:hint="Search FAQ'S"
+        android:drawableLeft="@drawable/ic_search_black_24dp"
+        android:background="@drawable/edit_help"
+        android:padding="5dp"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:text="FAQ's"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/notf_lines"/>
+
+    <ListView
+        android:id="@+id/list_view_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
 
 </LinearLayout>

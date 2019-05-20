@@ -11,7 +11,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:text="@string/null_board"
+        android:text="No Cards Yet"
         android:fontFamily="@font/montserrat"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="15sp" />

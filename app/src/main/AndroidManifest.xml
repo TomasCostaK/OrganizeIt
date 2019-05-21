@@ -13,6 +13,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".Login"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme_NoBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,32 +21,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewMainActivity"
+        <activity android:name=".Register"
+            android:theme="@style/AppTheme_NoBar">
+        </activity>
+        <activity
+            android:name=".NewMainActivity"
             android:label="NewMainActivity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".Task_Activity"
-            android:parentActivityName="com.example.drawer.Board" >
+            android:parentActivityName=".Board">
+
             <!-- Parent activity meta-data to support API level 4+ -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.drawer.Board" />
-
         </activity>
         <activity
             android:name=".BoardMembers"
             android:label="BoardSettings"
-            android:parentActivityName="com.example.drawer.Board" >
+            android:parentActivityName=".Board">
+
             <!-- Parent activity meta-data to support API level 4+ -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.drawer.Board" />
-
         </activity>
         <activity
             android:name=".Board"
             android:label="Tasks"
-            android:parentActivityName="com.example.drawer.NewMainActivity" >
+            android:parentActivityName=".NewMainActivity">
+
             <!-- Parent activity meta-data to support API level 4+ -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

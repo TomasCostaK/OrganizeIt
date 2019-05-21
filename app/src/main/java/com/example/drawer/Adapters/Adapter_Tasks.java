@@ -41,7 +41,7 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
 
         holder.card_title.setText(mData.get(position).getTitle());
         holder.card_description.setText(mData.get(position).getDescription());
-        holder.card_tasks.setText(mData.get(position).getDescription());
+        holder.card_tasks.setText(mData.get(position).getTasks());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

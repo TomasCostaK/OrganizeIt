@@ -36,10 +36,10 @@ public class Board extends AppCompatActivity {
 
         lstCards = new ArrayList<>();
         lstCards.add(new Card_Task("Colors", "Usar este guia visual","Amarelo e cinzento\nFont montserrat\nComida", R.drawable.mountain));
-        lstCards.add(new Card_Task("Compras", "Comprar estas coisas","atum\nmassa\nCenas", R.drawable.mountain));
+        /*lstCards.add(new Card_Task("Compras", "Comprar estas coisas","atum\nmassa\nCenas", R.drawable.mountain));
         lstCards.add(new Card_Task("Projetos", "Projetos Universidade","IHC\nBD", R.drawable.mountain));
         lstCards.add(new Card_Task("Cenas", "Esta descriçao tem que ter um tamanho incrivelmente grande para testar o container da descriçao e ver se desformata a card","Amarelo e cinzento\n Font montserrat\n Comida", R.drawable.mountain));
-        lstCards.add(new Card_Task("Coisas", "Comprar estas coisas","IHC\nBD", R.drawable.mountain));
+        lstCards.add(new Card_Task("Coisas", "Comprar estas coisas","IHC\nBD", R.drawable.mountain));*/
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclercards);
         final Adapter_Tasks myAdapter = new Adapter_Tasks(this, lstCards);

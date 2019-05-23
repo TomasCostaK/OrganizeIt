@@ -37,7 +37,6 @@
         <TextView
             android:id="@+id/card_tasks"
             android:textColor="@color/darker"
-            android:textStyle="bold"
             android:fontFamily="@font/montserrat"
             android:textSize="15sp"
             android:gravity="center_vertical"

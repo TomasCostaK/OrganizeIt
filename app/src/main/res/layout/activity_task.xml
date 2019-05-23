@@ -20,13 +20,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:background="#2d2d2d"
-                android:id="@+id/cardthumbnail"
-                android:scaleType="centerCrop"/>
-
             <TextView
                 android:id="@+id/cardtitle"
                 android:layout_width="wrap_content"

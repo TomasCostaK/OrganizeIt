@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -169,19 +170,18 @@ public class Board extends AppCompatActivity implements Adapter_Tasks.OnCardEdit
             @Override
             public void onClick(View v) {
                 //editar card
-
-                final EditText cardTitle = (EditText) mView.findViewById(R.id.editcardtitle);
-                final EditText cardDesc = (EditText) mView.findViewById(R.id.editcarddescription);
-                final EditText cardTasks = (EditText) mView.findViewById(R.id.editcardtasks);
+                final EditText tmp1 = (EditText) mView.findViewById(R.id.editcardtitle);
+                final EditText tmp2 = (EditText) mView.findViewById(R.id.editcarddescription);
+                final EditText tmp3 = (EditText) mView.findViewById(R.id.editcardtasks);
 
                 final Card_Task c1 = lstCards.get(0);
 
-                c1.setTitle(cardTitle.toString());
-                c1.setDescription(cardDesc.toString());
-                c1.setTasks(cardTasks.toString());
+                c1.setTitle(tmp1.getText().toString());
+                c1.setDescription(tmp2.getText().toString());
+                c1.setTasks(tmp3.getText().toString());
 
                 myAdapter.notifyDataSetChanged();
-                Toast.makeText(Board.this, "Card edited", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Board.this, "Card edited!", Toast.LENGTH_SHORT).show();
                 creation_dialog.hide();
             }
 

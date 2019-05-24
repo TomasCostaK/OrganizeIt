@@ -1,5 +1,6 @@
 package com.example.drawer;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,11 +8,12 @@ import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import com.example.drawer.R;
+import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.github.paolorotolo.appintro.model.SliderPage;
 
-public class AppTutorial extends AppIntro2 {
+public class AppTutorial extends AppIntro {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +55,8 @@ public class AppTutorial extends AppIntro2 {
     @Override
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
-        //Toast.makeText(this, "You should have read the tutorial!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You should have read the tutorial!", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, Login.class));
         finish();
         // Do something when users tap on Skip button.
     }
@@ -62,6 +65,7 @@ public class AppTutorial extends AppIntro2 {
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
         finish();
+        startActivity(new Intent(this, Login.class));
         // Do something when users tap on Done button.
     }
 

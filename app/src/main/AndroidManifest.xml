@@ -11,8 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Models.AppTutorial"
-            android:label="AppIntro">
+        <activity android:name=".AppTutorial"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,11 +24,6 @@
             android:name=".Login"
             android:label="@string/app_name"
             android:theme="@style/AppTheme_NoBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Register"
             android:theme="@style/AppTheme_NoBar">
@@ -74,11 +69,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.drawer.NewMainActivity" />
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

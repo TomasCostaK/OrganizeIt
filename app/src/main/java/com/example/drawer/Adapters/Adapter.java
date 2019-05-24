@@ -77,7 +77,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ExampleViewHolder> {
         exampleViewHolder.recyclerView.setHasFixedSize(true);
         cardArray.clear();
         Card_Model_Main default_card = new Card_Model_Main();
-        default_card.setCard_name("No Cards Yet");
+        default_card.setCard_name("-Welcome Card");
         cardArray.add(default_card);
 
         Adapter_Card childAdapter = new Adapter_Card(cardArray);

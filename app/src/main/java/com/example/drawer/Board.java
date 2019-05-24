@@ -81,11 +81,16 @@ public class Board extends AppCompatActivity implements Adapter_Tasks.OnCardEdit
                 create_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //Criar nova card
-                        createCard(card_edit.getText().toString(), description_edit.getText().toString(),tasks_edit.getText().toString());
-                        myAdapter.notifyDataSetChanged();
+                        if(validatecardtitle(card_edit)) {
+                            //Criar nova card
+                            createCard(card_edit.getText().toString(), description_edit.getText().toString(), tasks_edit.getText().toString());
+                            myAdapter.notifyDataSetChanged();
 
-                        creation_dialog.hide();
+                            creation_dialog.hide();
+                        }
+                        else{
+                            Toast.makeText(Board.this, "The Card Title can't be empty!", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     private void createCard(String name, String desc, String tasks) {
@@ -160,6 +165,8 @@ public class Board extends AppCompatActivity implements Adapter_Tasks.OnCardEdit
         final AlertDialog creation_dialog = mBuilder.create();
         creation_dialog.show();
 
+
+
         cancel_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,19 +181,33 @@ public class Board extends AppCompatActivity implements Adapter_Tasks.OnCardEdit
                 final EditText tmp2 = (EditText) mView.findViewById(R.id.editcarddescription);
                 final EditText tmp3 = (EditText) mView.findViewById(R.id.editcardtasks);
 
-                final Card_Task c1 = lstCards.get(0);
+                if(validatecardtitle(tmp1)){
+                    final Card_Task c1 = lstCards.get(0);
 
-                c1.setTitle(tmp1.getText().toString());
-                c1.setDescription(tmp2.getText().toString());
-                c1.setTasks(tmp3.getText().toString());
+                    c1.setTitle(tmp1.getText().toString());
+                    c1.setDescription(tmp2.getText().toString());
+                    c1.setTasks(tmp3.getText().toString());
 
-                myAdapter.notifyDataSetChanged();
-                Toast.makeText(Board.this, "Card edited!", Toast.LENGTH_SHORT).show();
-                creation_dialog.hide();
-            }
+                    myAdapter.notifyDataSetChanged();
+                    Toast.makeText(Board.this, "Card edited!", Toast.LENGTH_SHORT).show();
+                    creation_dialog.hide();
+                }
+                else{
+                    Toast.makeText(Board.this, "Insert a card title!", Toast.LENGTH_SHORT).show();
+                }
 
-        });
+        }
+    });
     }
+
+    private boolean validatecardtitle(EditText tmp1) {
+        String a = tmp1.getText().toString().trim();
+        if (a.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

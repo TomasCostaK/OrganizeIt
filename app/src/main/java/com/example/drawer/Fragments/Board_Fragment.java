@@ -91,7 +91,7 @@ public class Board_Fragment extends Fragment {
         invite_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Inivitation Sent", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "The user will collaborate in the board!", Toast.LENGTH_LONG).show();
             }
         });
 

@@ -142,38 +142,6 @@ public class Board extends AppCompatActivity {
     }
 
     public void editCard(View view){
-        android.app.AlertDialog.Builder mBuilder = new android.app.AlertDialog.Builder(Board.this);
-        View mView = getLayoutInflater().inflate(R.layout.deleting_card, null);
-
-        final TextView card1 = (TextView) mView.findViewById(R.id.deletecardtitle);
-        final TextView card2 = (TextView) mView.findViewById(R.id.deletecardtext);
-
-        Button cancel_btn = (Button) mView.findViewById(R.id.cancel_btn);
-        Button delete_btn = (Button) mView.findViewById(R.id.deletecard_btn);
-
-        mBuilder.setView(mView);
-        final AlertDialog creation_dialog = mBuilder.create();
-        creation_dialog.show();
-
-        cancel_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                creation_dialog.hide();
-            }
-        });
-
-        delete_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Criar nova card
-                deleteInstanceCard(v);
-                creation_dialog.hide();
-            }
-
-            private void deleteInstanceCard(View v) {
-                lstCards.remove(v);
-            }
-        });
     }
 
 

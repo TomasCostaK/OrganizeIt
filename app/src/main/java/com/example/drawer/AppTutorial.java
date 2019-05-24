@@ -14,7 +14,7 @@ import com.github.paolorotolo.appintro.AppIntro2;
 import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.github.paolorotolo.appintro.model.SliderPage;
 
-public class AppTutorial extends AppIntro {
+public class AppTutorial extends AppIntro2 {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

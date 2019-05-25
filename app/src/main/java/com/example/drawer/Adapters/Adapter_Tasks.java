@@ -14,17 +14,19 @@ import com.example.drawer.Models.Card_Task;
 import com.example.drawer.R;
 import com.example.drawer.Task_Activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHolder>{
     private Context mContext ;
-    private List<Card_Task> mData ;
+    private List<Card_Task> mData;
+    private OnCardEditListener onCardEditListener;
 
-
-    public Adapter_Tasks(Context mContext, List<Card_Task> mData) {
+    public Adapter_Tasks(Context mContext, List<Card_Task> mData, OnCardEditListener onCardEditListener) {
         this.mContext = mContext;
         this.mData = mData;
+        this.onCardEditListener = onCardEditListener;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
         View view ;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         view = mInflater.inflate(R.layout.cardview_item_task,parent,false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, onCardEditListener);
     }
 
     @Override
@@ -41,7 +43,7 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
 
         holder.card_title.setText(mData.get(position).getTitle());
         holder.card_description.setText(mData.get(position).getDescription());
-        holder.card_tasks.setText(mData.get(position).getDescription());
+        holder.card_tasks.setText(mData.get(position).getTasks());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,15 +70,16 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
         return mData.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView card_title;
         TextView card_description;
         ImageView card_thumbnail;
         TextView card_tasks;
         CardView cardView ;
+        OnCardEditListener onCardEditListener;
 
-        public MyViewHolder(View itemView) {
+        public MyViewHolder(View itemView, OnCardEditListener onCardEditListener) {
             super(itemView);
 
             card_title = (TextView) itemView.findViewById(R.id.card_name) ;
@@ -85,7 +88,19 @@ public class Adapter_Tasks extends RecyclerView.Adapter<Adapter_Tasks.MyViewHold
             card_tasks = (TextView) itemView.findViewById(R.id.card_tasks) ;
             cardView = (CardView) itemView.findViewById(R.id.cardviewid);
 
+            this.onCardEditListener = onCardEditListener;
+
+            itemView.setOnClickListener(this);
+
         }
+
+        public void onClick(View view){
+            onCardEditListener.editCard(getAdapterPosition());
+        }
+    }
+
+    public interface OnCardEditListener{
+        void editCard(int position);
     }
 
 }

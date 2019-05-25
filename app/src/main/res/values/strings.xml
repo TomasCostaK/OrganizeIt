@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Drawer</string>
+    <string name="app_name">OrganizeIt</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="favorite_boards">Favorite Boards</string>

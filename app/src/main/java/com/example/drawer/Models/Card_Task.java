@@ -11,42 +11,42 @@ public class Card_Task {
 
 
     public Card_Task(String title, String description, String tasks, int thumbnail) {
-        Title = title;
-        Description = description;
-        Tasks = tasks;
-        Thumbnail = thumbnail;
+        this.Title = title;
+        this.Description = description;
+        this.Tasks = tasks;
+        this.Thumbnail = thumbnail;
     }
 
 
     public String getTitle() {
-        return Title;
+        return this.Title;
     }
 
     public String getTasks() {
-        return Tasks;
+        return this.Tasks;
     }
 
     public String getDescription() {
-        return Description;
+        return this.Description;
     }
 
     public int getThumbnail() {
-        return Thumbnail;
+        return this.Thumbnail;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.Title = title;
     }
 
     public void setTasks(String category) {
-        Tasks = category;
+        this.Tasks = category;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.Description = description;
     }
 
     public void setThumbnail(int thumbnail) {
-        Thumbnail = thumbnail;
+        this.Thumbnail = thumbnail;
     }
 }

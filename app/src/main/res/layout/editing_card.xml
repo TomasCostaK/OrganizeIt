@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="25dp"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editing Card"
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="30sp"
+        android:id="@+id/editing_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:id="@+id/cardname"
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:fontFamily="@font/montserrat"
+        android:text=""
+        android:layout_height="wrap_content"
+        android:id="@+id/editcardtitle"
+        android:lines="1"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        android:id="@+id/carddescription"
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text=""
+        android:id="@+id/editcarddescription"
+        android:maxLines="3"
+        android:lines="2"/>
+
+    <TextView
+        android:id="@+id/cardtasks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tasks:"
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/editcardtasks"
+        android:maxLines="5"
+        android:lines="4"/>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_card_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:textAllCaps="false"
+            android:layout_marginRight="10dp"
+            android:text="Cancel"/>
+
+        <Button
+            android:id="@+id/editcard_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:layout_marginRight="20dp"
+            android:textAllCaps="false"
+            android:text="Edit"/>
+
+    </LinearLayout>
+
+</LinearLayout>

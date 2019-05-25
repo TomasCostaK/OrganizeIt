@@ -20,13 +20,6 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:background="#2d2d2d"
-                android:id="@+id/cardthumbnail"
-                android:scaleType="centerCrop"/>
-
             <TextView
                 android:id="@+id/cardtitle"
                 android:layout_width="wrap_content"
@@ -65,6 +58,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tasks"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/ftbn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="end"
+                android:src="@drawable/edit_white"
+                app:backgroundTint="@color/colorPrimary" />
 
         </LinearLayout>
 

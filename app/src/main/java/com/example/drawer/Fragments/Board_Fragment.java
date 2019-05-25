@@ -25,6 +25,7 @@ import com.example.drawer.Models.Card_Model_Main;
 import com.example.drawer.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Board_Fragment extends Fragment {
 
@@ -36,6 +37,7 @@ public class Board_Fragment extends Fragment {
     private Adapter adapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<Board_Model_Main> boards = new ArrayList<>();
+    private ArrayList<String> boards_created = new ArrayList<>();
 
     // Recycler Cards
     private ArrayList<Card_Model_Main> cards;
@@ -91,7 +93,7 @@ public class Board_Fragment extends Fragment {
         invite_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Inivitation Sent", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "The user will collaborate in the board!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -99,11 +101,20 @@ public class Board_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                createBoardList(name_edit.getText().toString());
-                buildRecyclerView();
-                notify_adapter();
+                if(name_edit.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "Board name can't be empty!", Toast.LENGTH_SHORT).show();
+                }
+                else if(boards_created.contains(name_edit.getText().toString().trim())) {
+                    Toast.makeText(getActivity(), "A board with that name already exists!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    createBoardList(name_edit.getText().toString());
+                    buildRecyclerView();
+                    notify_adapter();
+                    boards_created.add(name_edit.getText().toString().trim());
 
-                creation_dialog.hide();
+                    creation_dialog.hide();
+                }
             }
         });
     }

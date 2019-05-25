@@ -23,7 +23,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Are you sure you want to delete this card?"
         android:textSize="20sp"
-        android:id="@+id/deletecardtext" />
+        android:id="@+id/deletecardtext"/>
 
     <LinearLayout
         android:layout_marginTop="30dp"

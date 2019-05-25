@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,24 +26,20 @@ import com.example.drawer.Models.Card_Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board extends AppCompatActivity {
+public class Board extends AppCompatActivity implements Adapter_Tasks.OnCardEditListener {
 
-    List<Card_Task> lstCards ;
+    List<Card_Task> lstCards = new ArrayList<>();;
+    Adapter_Tasks myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tasks);
 
-        lstCards = new ArrayList<>();
-        lstCards.add(new Card_Task("Colors", "Usar este guia visual","Amarelo e cinzento\nFont montserrat\nComida", R.drawable.mountain));
-        lstCards.add(new Card_Task("Compras", "Comprar estas coisas","atum\nmassa\nCenas", R.drawable.mountain));
-        lstCards.add(new Card_Task("Projetos", "Projetos Universidade","IHC\nBD", R.drawable.mountain));
-        lstCards.add(new Card_Task("Cenas", "Esta descriçao tem que ter um tamanho incrivelmente grande para testar o container da descriçao e ver se desformata a card","Amarelo e cinzento\n Font montserrat\n Comida", R.drawable.mountain));
-        lstCards.add(new Card_Task("Coisas", "Comprar estas coisas","IHC\nBD", R.drawable.mountain));
+        lstCards.add(new Card_Task("Welcome Card", "This card was generated automatically to help you navigate the app!","Edit this card\nAdd Members\nCreate another board\nDelete this card", R.drawable.mountain));
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclercards);
-        final Adapter_Tasks myAdapter = new Adapter_Tasks(this, lstCards);
+        myAdapter = new Adapter_Tasks(this, lstCards,this);
         myrv.setLayoutManager(new GridLayoutManager(this, 2));
         myrv.setAdapter(myAdapter);
 
@@ -84,11 +81,16 @@ public class Board extends AppCompatActivity {
                 create_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //Criar nova card
-                        createCard(card_edit.getText().toString(), description_edit.getText().toString(),tasks_edit.getText().toString());
-                        myAdapter.notifyDataSetChanged();
+                        if(validatecardtitle(card_edit)) {
+                            //Criar nova card
+                            createCard(card_edit.getText().toString(), description_edit.getText().toString(), tasks_edit.getText().toString());
+                            myAdapter.notifyDataSetChanged();
 
-                        creation_dialog.hide();
+                            creation_dialog.hide();
+                        }
+                        else{
+                            Toast.makeText(Board.this, "The Card Title can't be empty!", Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                     private void createCard(String name, String desc, String tasks) {
@@ -98,7 +100,6 @@ public class Board extends AppCompatActivity {
             }
         });
 
-        //
 
         //ACTION BAR
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -132,16 +133,79 @@ public class Board extends AppCompatActivity {
             public void onClick(View v) {
                 //Criar nova card
                 deleteInstanceCard(v);
+                Toast.makeText(Board.this, "Card deleted!", Toast.LENGTH_SHORT).show();
                 creation_dialog.hide();
             }
 
             private void deleteInstanceCard(View v) {
-                lstCards.remove(v);
+                lstCards.remove(0);
+                myAdapter.notifyDataSetChanged();
             }
         });
     }
 
     public void editCard(View view){
+        android.app.AlertDialog.Builder mBuilder = new android.app.AlertDialog.Builder(Board.this);
+        final View mView = getLayoutInflater().inflate(R.layout.editing_card, null);
+
+        final Card_Task c1 = lstCards.get(0);
+
+        EditText cardTitle = (EditText) mView.findViewById(R.id.editcardtitle);
+        EditText cardDesc = (EditText) mView.findViewById(R.id.editcarddescription);
+        EditText cardTasks = (EditText) mView.findViewById(R.id.editcardtasks);
+
+        cardTitle.setText(c1.getTitle());
+        cardDesc.setText(c1.getDescription());
+        cardTasks.setText(c1.getTasks());
+
+        Button cancel_btn = (Button) mView.findViewById(R.id.cancel_card_btn);
+        Button editcard_btn = (Button) mView.findViewById(R.id.editcard_btn);
+
+        mBuilder.setView(mView);
+        final AlertDialog creation_dialog = mBuilder.create();
+        creation_dialog.show();
+
+
+
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                creation_dialog.hide();
+            }
+        });
+        editcard_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //editar card
+                final EditText tmp1 = (EditText) mView.findViewById(R.id.editcardtitle);
+                final EditText tmp2 = (EditText) mView.findViewById(R.id.editcarddescription);
+                final EditText tmp3 = (EditText) mView.findViewById(R.id.editcardtasks);
+
+                if(validatecardtitle(tmp1)){
+                    final Card_Task c1 = lstCards.get(0);
+
+                    c1.setTitle(tmp1.getText().toString());
+                    c1.setDescription(tmp2.getText().toString());
+                    c1.setTasks(tmp3.getText().toString());
+
+                    myAdapter.notifyDataSetChanged();
+                    Toast.makeText(Board.this, "Card edited!", Toast.LENGTH_SHORT).show();
+                    creation_dialog.hide();
+                }
+                else{
+                    Toast.makeText(Board.this, "Insert a card title!", Toast.LENGTH_SHORT).show();
+                }
+
+        }
+    });
+    }
+
+    private boolean validatecardtitle(EditText tmp1) {
+        String a = tmp1.getText().toString().trim();
+        if (a.isEmpty()){
+            return false;
+        }
+        return true;
     }
 
 
@@ -208,5 +272,11 @@ public class Board extends AppCompatActivity {
                 lstCards.remove(v);
             }
         });
+    }
+
+
+    @Override
+    public void editCard(int position) {
+
     }
 }

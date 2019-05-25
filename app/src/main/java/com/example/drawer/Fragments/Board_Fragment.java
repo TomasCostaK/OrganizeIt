@@ -127,11 +127,12 @@ public class Board_Fragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-        mAdapter.setOnItemClickListener(new Adapter.onItemClickListener() {
+        mAdapter.setOnItemClickListener(new Adapter_null.onItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 createBoard();
             }
+
         });
 
     }
@@ -139,9 +140,9 @@ public class Board_Fragment extends Fragment {
     public void createBoardList(String title) {
         Board_Model_Main new_board = new Board_Model_Main();
         new_board.setTitle(title);
-        insertBoard(new_board);
-
+        boards.add(new_board);
     }
+
     // recycler view boards
     public void buildRecyclerView() {
         mRecyclerView = v.findViewById(R.id.recyclerViewBoards_new);
@@ -158,13 +159,13 @@ public class Board_Fragment extends Fragment {
                 Intent intent = new Intent(getContext(), Board.class);
                 startActivity(intent);
             }
+
+            @Override
+            public void onDeleteClick(int position) {
+                deleteBoard(position);
+            }
         });
 
-    }
-
-    // create new board
-    public void insertBoard(Board_Model_Main board) {
-        boards.add(board);
     }
 
     // create new card
@@ -174,5 +175,42 @@ public class Board_Fragment extends Fragment {
 
     public void notify_adapter() {
         mAdapter.notifyDataSetChanged();
+    }
+
+    public void removeItem(int position) {
+        boards.remove(position);
+    }
+
+    public void deleteBoard(final int position) {
+        AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(getActivity());
+        View deleteView = getLayoutInflater().inflate(R.layout.deleting_board, null);
+
+        final TextView card1 = (TextView) deleteView.findViewById(R.id.deleteboardtitle);
+        final TextView card2 = (TextView) deleteView.findViewById(R.id.deleteboardtext);
+
+        Button cancel_btn = (Button) deleteView.findViewById(R.id.cancel_btn);
+        Button delete_btn = (Button) deleteView.findViewById(R.id.deleteboard_btn);
+
+        deleteBuilder.setView(deleteView);
+
+        final AlertDialog delete_dialog = deleteBuilder.create();
+        delete_dialog.show();
+
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete_dialog.hide();
+            }
+        });
+
+        delete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeItem(position);
+                adapter.notifyDataSetChanged();
+                delete_dialog.hide();
+                Toast.makeText(getContext(), "Board apagada com sucesso", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
